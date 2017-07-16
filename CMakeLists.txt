@@ -4,14 +4,8 @@ project(VulkanVoxel)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES main.cpp src/HelloTriangleApplication.cpp src/HelloTriangleApplication.h)
+link_directories(/home/philipp/Programme/VulkanSDK/1.0.54.0/x86_64/lib/)
 add_executable(VulkanVoxel ${SOURCE_FILES})
-target_link_libraries(VulkanVoxel vulkan)
-target_link_libraries(VulkanVoxel glfw3)
-target_link_libraries(VulkanVoxel X11)
-target_link_libraries(VulkanVoxel Xxf86vm)
-target_link_libraries(VulkanVoxel Xrandr)
-target_link_libraries(VulkanVoxel pthread)
-target_link_libraries(VulkanVoxel Xi)
-target_link_libraries(VulkanVoxel Xcursor)
-target_link_libraries(VulkanVoxel Xinerama)
-target_link_libraries(VulkanVoxel dl)
+target_link_libraries(VulkanVoxel vulkan glfw3 X11 Xxf86vm Xrandr pthread Xi Xcursor Xinerama dl)
+
+
