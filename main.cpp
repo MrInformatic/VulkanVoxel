@@ -1,6 +1,17 @@
 #include <iostream>
+#include <stdexcept>
+#include <functional>
+#include "src/HelloTriangleApplication.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    HelloTriangleApplication app;
+
+    try {
+        app.run();
+    } catch (const std::runtime_error& e) {
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }
