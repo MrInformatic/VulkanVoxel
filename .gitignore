@@ -83,3 +83,6 @@ crashlytics-build.properties
 fabric.properties
 
 .idea/
+
+# Vulkan
+*.spv
