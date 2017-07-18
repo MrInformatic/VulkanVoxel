@@ -15,6 +15,14 @@
 #include <vector>
 #include <cstring>
 
+struct QueueFamilyIndices {
+    int graphicsFamily = -1;
+
+    bool isComplete() {
+        return graphicsFamily >= 0;
+    }
+};
+
 class HelloTriangleApplication {
 public:
     void run();
@@ -29,28 +37,31 @@ private:
     #ifdef NDEBUG
         const bool enableValidationLayers = false;
     #else
-        const bool enableValidationLayers = true;//TODO:true
+        const bool enableValidationLayers = true;
     #endif
 
     void initWindow();
+
     void initVulkan();
     void createInstance();
     bool checkValidationLayerSupport();
     std::vector<const char*> getRequiredExtensions();
     void setupDebugCallback();
+
+    void pickPhysicalDevice();
+    bool isDeviceSuitable(VkPhysicalDevice device);
+    QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
+
     void mainLoop();
+
     void cleanup();
 
     GLFWwindow *window;
     VkInstance instance;
     VkDebugReportCallbackEXT callback;
+    VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
 
-    static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objType, uint64_t obj, size_t location, int32_t code, const char* layerPrefix, const char* msg, void* userData) {
-        std::cerr << "validation layer: " << msg << std::endl;
-
-        return VK_FALSE;
-    }
+    static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objType, uint64_t obj, size_t location, int32_t code, const char* layerPrefix, const char* msg, void* userData);
 };
-
 
 #endif //VULKANVOXEL_HELLOTRIANGLEAPPLICATION_H
