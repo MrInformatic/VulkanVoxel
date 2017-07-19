@@ -74,6 +74,8 @@ private:
     void createSwapChain();
     void createImageViews();
     void createFramebuffers();
+    void recreateSwapChain();
+    void cleanupSwapChain();
 
     void createRenderPass();
     void createGraphicsPipeline();
@@ -114,6 +116,7 @@ private:
     VkSemaphore renderFinishedSemaphore;
 
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objType, uint64_t obj, size_t location, int32_t code, const char* layerPrefix, const char* msg, void* userData);
+    static void onWindowResized(GLFWwindow* window, int width, int height);
 };
 
 #endif //VULKANVOXEL_HELLOTRIANGLEAPPLICATION_H
