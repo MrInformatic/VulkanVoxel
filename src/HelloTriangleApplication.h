@@ -20,6 +20,9 @@
 #include <vector>
 #include <cstring>
 #include <set>
+#include <limits>
+#include <fstream>
+#include <algorithm>
 
 struct QueueFamilyIndices {
     int graphicsFamily = -1;
